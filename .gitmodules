@@ -1,3 +1,6 @@
 [submodule "benchmarks"]
 	path = benchmarks
 	url = git@github.com:Florisheinen1/thesis_benchmarks.git
+[submodule "tools/c2rust"]
+	path = tools/c2rust
+	url = git@github.com:immunant/c2rust.git
