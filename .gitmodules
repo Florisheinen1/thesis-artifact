@@ -4,3 +4,6 @@
 [submodule "tools/c2rust"]
 	path = tools/c2rust
 	url = git@github.com:immunant/c2rust.git
+[submodule "tools/crown"]
+	path = tools/crown
+	url = git@github.com:Florisheinen1/crown.git
