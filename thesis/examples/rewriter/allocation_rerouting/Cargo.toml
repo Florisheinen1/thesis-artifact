@@ -1,0 +1,20 @@
+# Input for the rewriter, in the shape of a C2Rust translation (like the
+# projects in benchmarks/rust-code). generate.sh runs Crown and the rewriter on
+# a copy of this project.
+[workspace]
+members = []
+
+[package]
+name = "allocation-rerouting"
+version = "0.0.0"
+publish = false
+edition = "2018"
+autobins = false
+
+[lib]
+name = "allocation_rerouting"
+path = "lib.rs"
+crate-type = ["rlib"]
+
+[dependencies]
+libc = "=0.2.149"

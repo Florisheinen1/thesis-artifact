@@ -1,0 +1,5 @@
+# Formatting of this example, and of the rewritten version generate.sh shows
+# next to it. max_width keeps the lines short enough for a half-page column
+# in the thesis.
+hard_tabs = true
+max_width = 48

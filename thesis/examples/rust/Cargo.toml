@@ -1,0 +1,15 @@
+# Rust code examples shown in the thesis. Every file in src/bin/ must compile;
+# every file in compile-fail/ must fail with the errors it declares. Both are
+# checked by ../check.sh.
+
+[workspace]
+
+[package]
+name = "thesis-examples"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+libc = "0.2"
+cbox-runtime = { path = "../../../tools/rewriter/runtime" }
