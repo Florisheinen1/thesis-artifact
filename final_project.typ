@@ -1059,7 +1059,7 @@ The assumptions about Crown's results do not always hold. Two cases escape the a
 
 Crown's results can also be inconsistent with each other, as in @figure_borrowed_function_result, where the result of `strdup` is owning but the variable that receives it is not. Following the context rules would violate A2, as the `CBox` would be dropped while the variable still uses its allocation. Our rewriter handles these cases with the `into_raw()` exception of @context_rewriter, which is correct under A5, as the temporary `CBox` is not used again after the conversion.
 
-Finally, the urlparser benchmark contains undefined behavior on the inputs of its own test suite, so the claim does not apply to it. We discuss it in @chapter_evaluation.
+Finally, the urlparser benchmark contains undefined behavior on the inputs of its own test suite. We enlarge its undersized allocations, but other undefined behavior remains, so the claim does not apply to it. We discuss it in @chapter_evaluation.
 
 == Completeness <section_completeness>
 For completeness, we distinguish three levels:
@@ -1138,7 +1138,7 @@ All 20 benchmarks compile after the rewrite. As compilation alone does not prove
 
 The test suites of buffer, genann, quadtree and rgba pass. Notably, quadtree and rgba contain no owned arrays, so their tests only exercise the rerouted allocation functions. The test suite of genann only passes due to the exception described in @context_rewriter: in 65 interactions, 64 of which are function results, the rewriter transferred ownership with `into_raw()` instead of borrowing with `as_ptr()`. Without this exception, genann's tests fail due to a use-after-free.
 
-The test suite of urlparser initially failed, as shown in @figure_buffer_overflow_urlparser. Its C code allocates single-byte buffers and writes entire parts of a URL into them, a heap buffer overflow that is present in the original C code. This overflow was not caught because the rewrite made the program safer, as the buffer involved is not an owned array, but because the header changes the memory layout around allocations. We enlarged the 14 undersized allocations in the translated benchmark, after which its test suite passes both before and after the rewrite. This again shows how easily undefined behavior remains hidden in C programs that appear to work correctly.
+The test suite of urlparser initially failed, as shown in @figure_buffer_overflow_urlparser. Its C code allocates buffers that are too small, mostly single-byte buffers, and writes entire parts of a URL into them, a heap buffer overflow that is present in the original C code. This overflow was not caught because the rewrite made the program safer, as the buffer involved is not an owned array, but because the header changes the memory layout around allocations. We enlarged the 17 undersized allocations in the translated benchmark, after which its test suite passes both before and after the rewrite. Other undefined behavior remains, such as out-of-bounds reads, but it does not affect the outcome of the test suite. This again shows how easily undefined behavior remains hidden in C programs that appear to work correctly.
 
 #figure(
   ```c
