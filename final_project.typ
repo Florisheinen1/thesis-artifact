@@ -1076,7 +1076,7 @@ Under the assumptions of @section_assumptions, incompleteness at any of these le
 This chapter answers RQ4: to what extent does the rewrite reduce the unsafe surface area of the translated programs, while preserving their behavior? We first measure how each interaction with an owned array is rewritten, and then whether the rewritten programs still compile and pass their test suites.
 
 == Experimental setup
-We run the rewriter on the same 20 benchmarks as in @chapter_array_manifestation, after Crown's preprocessing and analysis. The rewriter records, for every interaction it rewrites, which rewrite it applied. All tables in this chapter are generated from these records, using a script that runs the complete pipeline from a fresh copy of the benchmarks.
+We run the rewriter on the same 20 benchmarks as in @chapter_array_manifestation, after Crown's preprocessing and analysis. The rewriter records, for every interaction it rewrites, which rewrite it applied. All tables in this chapter are generated from these records, using a script that runs the complete pipeline from a fresh copy of the benchmarks. This pipeline, together with the tools and benchmarks, is available as an artifact @thesis_artifact, and as a Docker image with everything installed and built @thesis_artifact_image.
 
 Five benchmarks, buffer, genann, quadtree, rgba and urlparser, contain test code. To run these tests, we added a binary entry point to their `Cargo.toml` that calls their test function, such that `cargo run` executes the test suite. We run each test suite both before and after the rewrite.
 

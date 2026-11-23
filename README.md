@@ -4,10 +4,8 @@ This is the artifact of the master thesis _Safe Array Translation for C2Rust_ (F
 2026). It contains the thesis itself, the tools it uses and builds, the benchmarks, and the scripts that produce
 every table in the evaluation from scratch.
 
+- Code (this repository, all versions): [10.5281/zenodo.24452651](https://doi.org/10.5281/zenodo.24452651)
 - Docker image: [10.5281/zenodo.24451932](https://doi.org/10.5281/zenodo.24451932)
-
-<!-- TODO: add the DOI of the code (this repository) once its Zenodo release exists:
-- Code (this repository): [10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX) -->
 
 ## Contents
 
