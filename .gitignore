@@ -1,2 +1,4 @@
 target/
 work/
+# the exported Docker image, uploaded to Zenodo separately
+/thesis-artifact-image.tar.gz
