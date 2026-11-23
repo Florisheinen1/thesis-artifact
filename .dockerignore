@@ -1,0 +1,5 @@
+# Build output and git metadata stay out of the image; the image builds everything itself.
+**/.git
+**/target
+work/
+benchmarks/transpiled/
