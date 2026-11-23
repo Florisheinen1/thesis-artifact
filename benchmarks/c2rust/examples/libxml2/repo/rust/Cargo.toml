@@ -1,0 +1,37 @@
+[package]
+name = "libxml2-rs"
+version = "0.1.0"
+
+[dependencies]
+c2rust-bitfields = { path = "../../../../c2rust-bitfields" }
+f128 = "0.2.2"
+
+[features]
+xchecks = ["c2rust-xcheck-plugin", "c2rust-xcheck-derive", "c2rust-xcheck-runtime"]
+xcheck-with-dlsym = ["c2rust-xcheck-backend-dynamic-dlsym"]
+xcheck-mvee = ["c2rust-xcheck-backend-libclevrbuf-sys"]
+
+[dependencies.c2rust-xcheck-plugin]
+path = "../../../../cross-checks/rust-checks/rustc-plugin"
+features = ["c-hash-functions"]
+optional = true
+
+[dependencies.c2rust-xcheck-derive]
+path = "../../../../cross-checks/rust-checks/derive-macros"
+optional = true
+
+[dependencies.c2rust-xcheck-runtime]
+path = "../../../../cross-checks/rust-checks/runtime"
+features = ["libc-hash", "fixed-length-array-hash"]
+optional = true
+
+[dependencies.c2rust-xcheck-backend-dynamic-dlsym]
+path = "../../../../cross-checks/rust-checks/backends/dynamic-dlsym"
+optional = true
+
+[dependencies.c2rust-xcheck-backend-libclevrbuf-sys]
+path = "../../../../cross-checks/rust-checks/backends/libclevrbuf-sys"
+optional = true
+
+[build-dependencies]
+cc = "1.0"

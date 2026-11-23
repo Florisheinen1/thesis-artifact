@@ -1,0 +1,16 @@
+build/
+dist/
+snudown.egg-info/
+src/html_entities.h
+*.pyc
+*.so
+*.so.*
+*.o
+*.log
+/fuzzing/bin
+/fuzzing/testing
+
+compile_commands.json
+*.c.cbor
+translator-build/
+c2rust/

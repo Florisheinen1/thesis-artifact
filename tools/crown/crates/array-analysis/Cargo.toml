@@ -1,0 +1,12 @@
+[package]
+name = "array-analysis"
+version = "0.1.0"
+edition = "2021"
+
+[package.metadata.rust-analyzer]
+rustc_private = true
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+analysis = { path = "../analysis" }
+common = { path = "../common" }

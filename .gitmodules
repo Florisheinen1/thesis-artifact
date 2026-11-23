@@ -1,9 +1,0 @@
-[submodule "benchmarks"]
-	path = benchmarks
-	url = git@github.com:Florisheinen1/thesis_benchmarks.git
-[submodule "tools/crown"]
-	path = tools/crown
-	url = git@github.com:Florisheinen1/crown.git
-[submodule "tools/rewriter"]
-	path = tools/rewriter
-	url = git@github.com:Florisheinen1/array-rewriter.git

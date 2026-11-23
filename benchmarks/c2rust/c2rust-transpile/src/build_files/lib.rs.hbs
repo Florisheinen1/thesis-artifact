@@ -1,0 +1,20 @@
+{{#each pragmas~}}
+    #![{{this.0}}({{this.1}})]
+{{/each}}
+
+{{#each crates~}}
+{{#if this.macro_use~}}#[macro_use]{{~/if}}
+extern crate {{this.ident}};
+{{~/each}}
+
+{{#each modules~}}
+{{~#if this.path~}}
+#[path = "{{this.path}}"]
+{{/if~}}
+{{#unless this.close~}}
+pub mod {{this.name}}
+{{~#if this.open}} { {{~else~}};{{~/if}}
+{{else~}}
+} // mod {{this.name}}
+{{/unless}}
+{{/each}}
