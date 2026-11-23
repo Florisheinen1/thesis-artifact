@@ -171,7 +171,7 @@ Simulated language constructs come with significant downsides. Getting a simulat
 )
 
 == Unsafety
-When talking about (un)safety in programming languages, many different definitions and categories exist. One such category, memory safety, is about how a programming language prevents the running program from corrupting its memory. The disadvantage of this corrupt memory is that it prevents the ability to check if memory has been corrupted, as the code that is supposed to check for this might have been affected too. Another category, type safety, protects the programmer from misinterpreting one type as another. If there is no guard against such accidental misinterpretations, a numerical value can be mistakenly interpreted as a character, for example. It is impossible to check for these accidents afterwards, as the underlying memory is exactly the same. These two examples highlight a common ground: The inability to detect something went wrong after a mistake happened. This shortcoming prevents programmers from creating a failsafe in case something does go wrong. Additionally, unsafety allows programs to continue running even after unsafe behavior happened, possibly resulting in even worse situations. In this work, we use a lack of protection against these irrecoverable errors as the definition of general unsafety.
+When talking about (un)safety in programming languages, many different definitions and categories exist. One such category, memory safety, is about how a programming language prevents the running program from corrupting its memory. The disadvantage of corrupt memory is that it prevents the ability to check if memory has been corrupted, as the code that is supposed to check for this might have been affected too. Another category, type safety, protects the programmer from misinterpreting one type as another. If there is no guard against such accidental misinterpretations, a numerical value can be mistakenly interpreted as a character, for example. It is impossible to check for these accidents afterwards, as the underlying memory is exactly the same. These two examples highlight a common ground: The inability to detect something went wrong after a mistake happened. This shortcoming prevents programmers from creating a failsafe in case something does go wrong. Additionally, unsafety allows programs to continue running even after unsafe behavior happened, possibly resulting in even worse situations. In this work, we use a lack of protection against these irrecoverable errors as the definition of general unsafety.
 
 == Unsafety in C
 The C language is regarded as a very unsafe language. This is by design, as C trades safety for programmer control and performance. The result is a language that allows for accidentally accessing memory that it does not own, a language that allows for interpreting any piece of memory as any type, but a language with compilers that can optimize code extremely well. Wrong usage of the language is therefore also left as undefined behavior, instead of forcing compilers to insert runtime checks that prevent this. This unfortunately can result in unexpected behavior from compilers. Take for example @undefined_behavior_optimized_away. Here, because dereferencing a nullpointer is undefined behavior and is assumed to never happen, the compiler can assume the pointer cannot be null. That means the test for checking if `array` is a nullpointer is redundant, and is optimized away. This results in a program that does not check for null, even though it is explicitly written by the programmer. Another example is accessing variables of an array in C in @accessing_out_of_bounds. A programmer can accidentally access a piece of memory that is not within the allocated memory of the array, which is undefined behavior. Due to the lack of safety checks, the program could continue to run normally, or it could crash. In both scenarios, it is difficult to figure out what piece of code was at fault.
@@ -273,27 +273,12 @@ The C language is regarded as a very unsafe language. This is by design, as C tr
 Rust is designed to provide both safety and performance. When a runtime safety check fails, the program panics rather than continuing in an undefined state, as shown in @accessing_out_of_bounds. However, relying on too many runtime checks hurts performance, so Rust instead moves as many checks as possible to compile time. Doing so requires the compiler to guarantee that every reachable program state is safe, which in turn requires a set of strict rules. One such rule is that raw pointers cannot be dereferenced in safe code, since their validity is not guaranteed. Other rules come from the borrow checker, which enforces two properties: every piece of data has a single owner, as shown in @ownership_uniqueness, and at any point data may be borrowed either by many immutable references or by exactly one mutable reference, but not both, as shown in @mutable_mutual_exclusivity.
 
 #figure(
-  table(
-    align: left,
-    table.cell(
-      align: center,
-      [*Rust code*],
-    ),
-    snippet("/thesis/examples/rust/compile-fail/ownership_uniqueness.rs", name: "ownership_uniqueness"),
-  ),
+  snippet("/thesis/examples/rust/compile-fail/ownership_uniqueness.rs", name: "ownership_uniqueness"),
   caption: "Example of how each piece of data must have a single owner. When ownership is moved, previously made references are invalidated.",
 ) <ownership_uniqueness>
 
 #figure(
-  table(
-    align: left,
-    columns: auto,
-    table.cell(
-      [*Rust code*],
-      align: center,
-    ),
-    snippet("/thesis/examples/rust/compile-fail/mutable_exclusivity.rs", name: "mutable_exclusivity"),
-  ),
+  snippet("/thesis/examples/rust/compile-fail/mutable_exclusivity.rs", name: "mutable_exclusivity"),
   caption: "Example of the rule that a single mutable reference and many immutable references are mutually exclusive.",
 ) <mutable_mutual_exclusivity>
 
@@ -305,14 +290,7 @@ While this strictness guarantees correctness, it is also overly restrictive: som
 To accommodate these cases, Rust provides an unsafe context, marked by the `unsafe` keyword, in which some of the language's safety rules are relaxed. Within an unsafe block, it becomes possible to dereference raw pointers and to call functions that are themselves marked unsafe, as shown in @rust_unsafety. Because actions like dereferencing a raw pointer could go wrong, it is up to the developer to ensure it is only done in correct ways. Using `unsafe` is therefore a contract the developer makes with the compiler, which promises the compiler that all the unsafe code is correct, even though the compiler cannot verify this itself. Important to note here is that the borrow checker is not disabled in unsafe blocks. This means that if a safe mutable reference and a raw mutable pointer to the same object are both active inside an unsafe block, the assumption that the mutable reference is the unique pointer to that object is broken, which is undefined behavior.
 
 #figure(
-  table(
-    align: left,
-    table.cell(
-      [*Unsafe Rust code*],
-      align: center,
-    ),
-    snippet("/thesis/examples/rust/src/bin/raw_pointer_dereference.rs", name: "raw_pointer_dereference"),
-  ),
+  snippet("/thesis/examples/rust/src/bin/raw_pointer_dereference.rs", name: "raw_pointer_dereference"),
   caption: "Using unsafe to dereference a raw pointer. Without the unsafe context, dereferencing is not allowed in safe Rust.",
 ) <rust_unsafety>
 
@@ -352,7 +330,7 @@ When an array or slice is allocated on the heap, it can be placed inside a `Box`
 This section contains the current state of the art related to C to Rust translation. First, covering the works that directly influence this research. Second, related works that attempt to solve the same problem differently, or a related problem.
 
 == C2Rust
-C2Rust is an industrial tool that translates C99-compliant C to Rust while preserving functional correctness through syntactic rewrites. It bridges the differences between the two languages through a combination of FFI, native Rust constructs, and simulation. C functions are called through FFI bindings provided by the libc crate, and C types that differ from Rust's are mapped using libc's type definitions. Constructs with no direct Rust equivalent are simulated: variable-length arrays, which Rust does not support, are replaced with heap-allocated arrays, and C's text-based macros, which have no equivalent in Rust's macro system, are fully expanded before translation. Because C2Rust operates at the syntactic level and C organizes code into modules, the output follows the same module structure. However, unlike C, Rust does not allow duplicate definitions across modules, so some additional manual refactoring is typically needed to make the translated project compile.
+C2Rust @C2Rust is an industrial tool that translates C99-compliant C to Rust while preserving functional correctness through syntactic rewrites. It bridges the differences between the two languages through a combination of FFI, native Rust constructs, and simulation. C functions are called through FFI bindings provided by the libc crate, and C types that differ from Rust's are mapped using libc's type definitions. Constructs with no direct Rust equivalent are simulated: variable-length arrays, which Rust does not support, are replaced with heap-allocated arrays, and C's text-based macros, which have no equivalent in Rust's macro system, are fully expanded before translation. Because C2Rust operates at the syntactic level and C organizes code into modules, the output follows the same module structure. However, unlike C, Rust does not allow duplicate definitions across modules, so some additional manual refactoring is typically needed to make the translated project compile.
 
 In C, references, heap objects, and arrays are all represented as thin pointers. C2Rust's output reflects this directly, as all those values become `*mut T` raw pointers. To avoid incorrectly restricting any pointer, C2Rust conservatively marks all of them as mutable, which is correct but hides whether a pointer is actually written to. Arrays get the same treatment: instead of using a fat pointer to a slice, which would carry the array's length alongside its address, C2Rust always emits a thin pointer to the first element, with subsequent elements accessed through pointer arithmetic. This means no length information is preserved for any array in C2Rust's output.
 

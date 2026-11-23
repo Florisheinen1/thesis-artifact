@@ -16,7 +16,7 @@ fn main() {
 
 	let obj_ref_1 = &my_obj;
 	let obj_ref_2 = &my_obj;
-	// Multiple simultanous references
+	// Multiple simultaneous references
 
 	let new_own = &mut my_obj;
 
