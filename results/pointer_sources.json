@@ -1,0 +1,179 @@
+{
+  "columns": [
+    "benchmark",
+    "total",
+    "array",
+    "owned_array",
+    "owned_output_param_array",
+    "non_owned_array"
+  ],
+  "rows": [
+    {
+      "array": 1087,
+      "benchmark": "brotli",
+      "non_owned_array": 1086,
+      "owned_array": 0,
+      "owned_output_param_array": 1,
+      "total": 2427
+    },
+    {
+      "array": 211,
+      "benchmark": "heman",
+      "non_owned_array": 185,
+      "owned_array": 26,
+      "owned_output_param_array": 0,
+      "total": 1165
+    },
+    {
+      "array": 649,
+      "benchmark": "tulipindicators",
+      "non_owned_array": 648,
+      "owned_array": 1,
+      "owned_output_param_array": 0,
+      "total": 898
+    },
+    {
+      "array": 288,
+      "benchmark": "lodepng",
+      "non_owned_array": 247,
+      "owned_array": 39,
+      "owned_output_param_array": 2,
+      "total": 646
+    },
+    {
+      "array": 145,
+      "benchmark": "lil",
+      "non_owned_array": 126,
+      "owned_array": 19,
+      "owned_output_param_array": 0,
+      "total": 541
+    },
+    {
+      "array": 231,
+      "benchmark": "binn",
+      "non_owned_array": 225,
+      "owned_array": 0,
+      "owned_output_param_array": 6,
+      "total": 430
+    },
+    {
+      "array": 102,
+      "benchmark": "bzip2",
+      "non_owned_array": 100,
+      "owned_array": 2,
+      "owned_output_param_array": 0,
+      "total": 307
+    },
+    {
+      "array": 85,
+      "benchmark": "json.h",
+      "non_owned_array": 77,
+      "owned_array": 8,
+      "owned_output_param_array": 0,
+      "total": 245
+    },
+    {
+      "array": 13,
+      "benchmark": "libzahl",
+      "non_owned_array": 12,
+      "owned_array": 1,
+      "owned_output_param_array": 0,
+      "total": 216
+    },
+    {
+      "array": 47,
+      "benchmark": "libtree",
+      "non_owned_array": 42,
+      "owned_array": 5,
+      "owned_output_param_array": 0,
+      "total": 138
+    },
+    {
+      "array": 35,
+      "benchmark": "genann",
+      "non_owned_array": 30,
+      "owned_array": 5,
+      "owned_output_param_array": 0,
+      "total": 114
+    },
+    {
+      "array": 74,
+      "benchmark": "urlparser",
+      "non_owned_array": 69,
+      "owned_array": 4,
+      "owned_output_param_array": 1,
+      "total": 107
+    },
+    {
+      "array": 14,
+      "benchmark": "buffer",
+      "non_owned_array": 11,
+      "owned_array": 2,
+      "owned_output_param_array": 1,
+      "total": 72
+    },
+    {
+      "array": 0,
+      "benchmark": "quadtree",
+      "non_owned_array": 0,
+      "owned_array": 0,
+      "owned_output_param_array": 0,
+      "total": 67
+    },
+    {
+      "array": 13,
+      "benchmark": "libcsv",
+      "non_owned_array": 12,
+      "owned_array": 0,
+      "owned_output_param_array": 1,
+      "total": 60
+    },
+    {
+      "array": 9,
+      "benchmark": "ht",
+      "non_owned_array": 7,
+      "owned_array": 2,
+      "owned_output_param_array": 0,
+      "total": 33
+    },
+    {
+      "array": 8,
+      "benchmark": "rgba",
+      "non_owned_array": 8,
+      "owned_array": 0,
+      "owned_output_param_array": 0,
+      "total": 23
+    },
+    {
+      "array": 0,
+      "benchmark": "avl",
+      "non_owned_array": 0,
+      "owned_array": 0,
+      "owned_output_param_array": 0,
+      "total": 22
+    },
+    {
+      "array": 0,
+      "benchmark": "bst",
+      "non_owned_array": 0,
+      "owned_array": 0,
+      "owned_output_param_array": 0,
+      "total": 17
+    },
+    {
+      "array": 2,
+      "benchmark": "robotfindskitten",
+      "non_owned_array": 2,
+      "owned_array": 0,
+      "owned_output_param_array": 0,
+      "total": 6
+    }
+  ],
+  "total": {
+    "array": 3013,
+    "non_owned_array": 2887,
+    "owned_array": 114,
+    "owned_output_param_array": 12,
+    "total": 7534
+  }
+}

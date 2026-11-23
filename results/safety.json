@@ -1,0 +1,133 @@
+{
+  "columns": [
+    "benchmark",
+    "bounds_checked",
+    "stays_cbox",
+    "leaves_as_raw",
+    "unchanged",
+    "promoted",
+    "total"
+  ],
+  "promoted_by_source_type": {
+    "FnBody": 1,
+    "FnResult": 64
+  },
+  "rows": [
+    {
+      "benchmark": "lodepng",
+      "bounds_checked": 82,
+      "leaves_as_raw": 150,
+      "promoted": 27,
+      "stays_cbox": 62,
+      "total": 294,
+      "unchanged": 0
+    },
+    {
+      "benchmark": "heman",
+      "bounds_checked": 98,
+      "leaves_as_raw": 102,
+      "promoted": 0,
+      "stays_cbox": 63,
+      "total": 263,
+      "unchanged": 0
+    },
+    {
+      "benchmark": "lil",
+      "bounds_checked": 19,
+      "leaves_as_raw": 56,
+      "promoted": 8,
+      "stays_cbox": 57,
+      "total": 132,
+      "unchanged": 0
+    },
+    {
+      "benchmark": "libtree",
+      "bounds_checked": 46,
+      "leaves_as_raw": 21,
+      "promoted": 0,
+      "stays_cbox": 12,
+      "total": 79,
+      "unchanged": 0
+    },
+    {
+      "benchmark": "genann",
+      "bounds_checked": 37,
+      "leaves_as_raw": 21,
+      "promoted": 10,
+      "stays_cbox": 11,
+      "total": 69,
+      "unchanged": 0
+    },
+    {
+      "benchmark": "bzip2",
+      "bounds_checked": 8,
+      "leaves_as_raw": 37,
+      "promoted": 1,
+      "stays_cbox": 4,
+      "total": 49,
+      "unchanged": 0
+    },
+    {
+      "benchmark": "json.h",
+      "bounds_checked": 0,
+      "leaves_as_raw": 12,
+      "promoted": 0,
+      "stays_cbox": 28,
+      "total": 40,
+      "unchanged": 0
+    },
+    {
+      "benchmark": "urlparser",
+      "bounds_checked": 0,
+      "leaves_as_raw": 23,
+      "promoted": 19,
+      "stays_cbox": 4,
+      "total": 27,
+      "unchanged": 0
+    },
+    {
+      "benchmark": "buffer",
+      "bounds_checked": 2,
+      "leaves_as_raw": 11,
+      "promoted": 0,
+      "stays_cbox": 7,
+      "total": 20,
+      "unchanged": 0
+    },
+    {
+      "benchmark": "ht",
+      "bounds_checked": 9,
+      "leaves_as_raw": 6,
+      "promoted": 0,
+      "stays_cbox": 5,
+      "total": 20,
+      "unchanged": 0
+    },
+    {
+      "benchmark": "libzahl",
+      "bounds_checked": 0,
+      "leaves_as_raw": 3,
+      "promoted": 0,
+      "stays_cbox": 2,
+      "total": 5,
+      "unchanged": 0
+    },
+    {
+      "benchmark": "tulipindicators",
+      "bounds_checked": 0,
+      "leaves_as_raw": 3,
+      "promoted": 0,
+      "stays_cbox": 1,
+      "total": 4,
+      "unchanged": 0
+    }
+  ],
+  "total": {
+    "bounds_checked": 301,
+    "leaves_as_raw": 445,
+    "promoted": 65,
+    "stays_cbox": 256,
+    "total": 1002,
+    "unchanged": 0
+  }
+}

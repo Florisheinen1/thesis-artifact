@@ -1,0 +1,132 @@
+{
+  "output_param_impact": {
+    "array_pointers": 2835,
+    "not_owned_array_output_params": 1,
+    "owned_array_output_params": 12,
+    "owned_array_pointers": 106,
+    "tracked_pointers": 6722
+  },
+  "struct_fields_by_nesting_shape": {
+    "columns": [
+      "group",
+      "owned",
+      "not_owned",
+      "total"
+    ],
+    "rows": [
+      {
+        "group": "thin",
+        "not_owned": 210,
+        "owned": 25,
+        "total": 235
+      },
+      {
+        "group": "array",
+        "not_owned": 146,
+        "owned": 17,
+        "total": 163
+      },
+      {
+        "group": "array of arrays",
+        "not_owned": 9,
+        "owned": 0,
+        "total": 9
+      },
+      {
+        "group": "mixed",
+        "not_owned": 3,
+        "owned": 3,
+        "total": 6
+      }
+    ],
+    "total": {
+      "not_owned": 368,
+      "owned": 45,
+      "total": 413
+    }
+  },
+  "variables_by_fatness_and_output_param": {
+    "columns": [
+      "group",
+      "owned",
+      "not_owned",
+      "total"
+    ],
+    "rows": [
+      {
+        "group": "thin, not output param",
+        "not_owned": 2861,
+        "owned": 296,
+        "total": 3157
+      },
+      {
+        "group": "array, not output param",
+        "not_owned": 2728,
+        "owned": 94,
+        "total": 2822
+      },
+      {
+        "group": "thin, output param",
+        "not_owned": 49,
+        "owned": 681,
+        "total": 730
+      },
+      {
+        "group": "array, output param",
+        "not_owned": 1,
+        "owned": 12,
+        "total": 13
+      }
+    ],
+    "total": {
+      "not_owned": 5639,
+      "owned": 1083,
+      "total": 6722
+    }
+  },
+  "variables_by_nesting_shape": {
+    "columns": [
+      "group",
+      "owned",
+      "not_owned",
+      "total"
+    ],
+    "rows": [
+      {
+        "group": "thin",
+        "not_owned": 2874,
+        "owned": 941,
+        "total": 3815
+      },
+      {
+        "group": "array",
+        "not_owned": 2443,
+        "owned": 96,
+        "total": 2539
+      },
+      {
+        "group": "array of arrays",
+        "not_owned": 224,
+        "owned": 6,
+        "total": 230
+      },
+      {
+        "group": "mixed",
+        "not_owned": 88,
+        "owned": 28,
+        "total": 116
+      },
+      {
+        "group": "nested thin",
+        "not_owned": 10,
+        "owned": 12,
+        "total": 22
+      }
+    ],
+    "total": {
+      "not_owned": 5639,
+      "owned": 1083,
+      "total": 6722
+    }
+  }
+}

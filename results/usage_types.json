@@ -1,0 +1,99 @@
+{
+  "columns": [
+    "usage_type",
+    "owned_array",
+    "owned_output_param_array",
+    "non_owned_array"
+  ],
+  "rows": [
+    {
+      "non_owned_array": 3487,
+      "owned_array": 273,
+      "owned_output_param_array": 0,
+      "usage_type": "Assignment"
+    },
+    {
+      "non_owned_array": 6446,
+      "owned_array": 220,
+      "owned_output_param_array": 0,
+      "usage_type": "DereferenceElement"
+    },
+    {
+      "non_owned_array": 4135,
+      "owned_array": 142,
+      "owned_output_param_array": 95,
+      "usage_type": "PassToFunction"
+    },
+    {
+      "non_owned_array": 1353,
+      "owned_array": 81,
+      "owned_output_param_array": 0,
+      "usage_type": "ReferenceElement"
+    },
+    {
+      "non_owned_array": 258,
+      "owned_array": 66,
+      "owned_output_param_array": 0,
+      "usage_type": "NullCheck"
+    },
+    {
+      "non_owned_array": 49,
+      "owned_array": 52,
+      "owned_output_param_array": 0,
+      "usage_type": "Deallocate"
+    },
+    {
+      "non_owned_array": 168,
+      "owned_array": 44,
+      "owned_output_param_array": 0,
+      "usage_type": "AddressOfPointer"
+    },
+    {
+      "non_owned_array": 156,
+      "owned_array": 36,
+      "owned_output_param_array": 0,
+      "usage_type": "Returned"
+    },
+    {
+      "non_owned_array": 6,
+      "owned_array": 14,
+      "owned_output_param_array": 0,
+      "usage_type": "Reallocate"
+    },
+    {
+      "non_owned_array": 61,
+      "owned_array": 5,
+      "owned_output_param_array": 0,
+      "usage_type": "ReferenceRawArray"
+    },
+    {
+      "non_owned_array": 178,
+      "owned_array": 0,
+      "owned_output_param_array": 0,
+      "usage_type": "OffsetFrom"
+    },
+    {
+      "non_owned_array": 87,
+      "owned_array": 0,
+      "owned_output_param_array": 0,
+      "usage_type": "ComparePointer"
+    },
+    {
+      "non_owned_array": 19,
+      "owned_array": 0,
+      "owned_output_param_array": 0,
+      "usage_type": "Unclassified"
+    },
+    {
+      "non_owned_array": 2,
+      "owned_array": 0,
+      "owned_output_param_array": 0,
+      "usage_type": "Unused"
+    }
+  ],
+  "total": {
+    "non_owned_array": 16405,
+    "owned_array": 933,
+    "owned_output_param_array": 95
+  }
+}
